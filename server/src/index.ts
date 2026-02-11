@@ -31,6 +31,27 @@ app.use("/api/chat", chatRoutes);
 app.use("/api/knowledge", knowledgeRoutes);
 app.use("/api/model-progress", modelProgressRoutes);
 
+// Helper to determine directory (ESM)
+import path from "path";
+import { fileURLToPath } from "url";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Serve static files in production
+if (process.env.NODE_ENV === "production" || process.env.SERVE_STATIC === "true") {
+  const clientDist = path.join(__dirname, "../../client/dist");
+  app.use(express.static(clientDist));
+
+  app.get("*", (req, res) => {
+    // Skip API routes
+    if (req.path.startsWith("/api")) {
+      res.status(404).json({ error: "Not found" });
+      return;
+    }
+    res.sendFile(path.join(clientDist, "index.html"));
+  });
+}
+
 app.get("/health", (_req, res) => {
   res.json({ ok: true });
 });
@@ -38,7 +59,7 @@ app.get("/health", (_req, res) => {
 // Initialize database and vector store before starting server
 Promise.all([initDb(), initLanceDB()])
   .then(() => {
-    app.listen(PORT, () => {
+    app.listen(PORT, "0.0.0.0", () => {
       console.log(`Server running at http://127.0.0.1:${PORT}/`);
     });
   })
