@@ -1,0 +1,16 @@
+{
+  "name": "web-embedded-ai-bot",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  },
+  "dependencies": {
+    "@langchain/core": "^1.1.22",
+    "langchain": "^1.2.21"
+  }
+}

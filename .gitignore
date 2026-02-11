@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Build outputs
+dist/
+build/
+out/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Server Data (SQLite, LanceDB)
+server/data/
+*.db
+*.sqlite
+
+# IDEs
+.vscode/
+.idea/
+
+# Testing
+coverage/
+
+# Misc
+.gemini/
+tmp/
