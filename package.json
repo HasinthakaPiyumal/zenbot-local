@@ -1,16 +1,25 @@
 {
   "name": "web-embedded-ai-bot",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
-    "dev:server": "npm run dev --prefix server",
-    "dev:client": "npm run dev --prefix client"
-  },
-  "devDependencies": {
-    "concurrently": "^9.1.0"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
-    "@langchain/core": "^1.1.22",
-    "langchain": "^1.2.21"
+    "@ai-sdk/openai-compatible": "^2.0.30",
+    "@ai-sdk/react": "^3.0.87",
+    "ai": "^6.0.85",
+    "next": "16.1.6",
+    "ollama-ai-provider-v2": "^3.3.0",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5"
   }
 }

@@ -1,56 +1,36 @@
-# Web Embedded AI Bot
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Node.js + React chat app with an on-device LLM (Transformers.js v4, Qwen3-0.6B-ONNX). WhatsApp-style UI; model download progress is shown in the Node console and synced to the frontend via SSE.
+## Getting Started
 
-## Prerequisites
+First, run the development server:
 
-- Node.js 18+
-- npm 9+
-
-## Setup
-
-```bash
-# Root (optional - run both server and client)
-npm install
-
-# Server
-cd server && npm install
-
-# Client
-cd client && npm install
-```
-
-**Note:** The first `npm install` in `server/` may take several minutes (downloads ONNX runtime and model assets).
-
-## Run
-
-**Option 1 – from root (both at once):**
 ```bash
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-**Option 2 – separately:**
-```bash
-# Terminal 1
-cd server && npm run dev
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-# Terminal 2
-cd client && npm run dev
-```
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-- **Server:** http://localhost:3000  
-- **Client:** http://localhost:5173  
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-Set `VITE_API_URL` in `client/.env` if the API runs on a different host/port.
+## Learn More
 
-## API
+To learn more about Next.js, take a look at the following resources:
 
-- `GET /api/chat` – list messages  
-- `POST /api/chat` – send user message, get back user + assistant messages (body: `{ "content": "..." }`)  
-- `GET /api/model-progress` – SSE stream of model load progress and `{ "ready": true }` when done  
-- `POST /api/ai/generate` – body `{ "message": "..." }`, returns `{ "reply": "..." }`
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## Stack
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-- **Server:** Node.js, Express, TypeScript, `@huggingface/transformers@4.0.0-next.2`  
-- **Client:** React, Vite, TypeScript  
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

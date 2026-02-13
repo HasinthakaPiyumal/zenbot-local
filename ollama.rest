@@ -1,0 +1,66 @@
+### =========================
+### Ollama Health Check
+### =========================
+GET http://localhost:11434
+Accept: application/json
+
+
+### =========================
+### List Installed Models
+### =========================
+GET http://localhost:11434/api/tags
+Accept: application/json
+
+
+### =========================
+### Generate Text (No Streaming)
+### =========================
+POST http://localhost:11434/api/generate
+Content-Type: application/json
+
+{
+  "model": "qwen2.5:0.5b",
+  "prompt": "Explain RAG in one sentence",
+  "stream": false
+}
+
+
+### =========================
+### Generate Text (Streaming)
+### =========================
+POST http://localhost:11434/api/generate
+Content-Type: application/json
+
+{
+  "model": "qwen2.5:0.5b",
+  "prompt": "Explain transformers simply",
+  "stream": true
+}
+
+
+### =========================
+### Chat API (Messages format)
+### =========================
+POST http://localhost:11434/api/chat
+Content-Type: application/json
+
+{
+  "model": "qwen2.5:0.5b",
+  "messages": [
+    { "role": "system", "content": "You are a helpful assistant." },
+    { "role": "user", "content": "What is an API?" }
+  ],
+  "stream": false
+}
+
+
+### =========================
+### Generate Embeddings
+### =========================
+POST http://localhost:11434/api/embeddings
+Content-Type: application/json
+
+{
+  "model": "nomic-embed-text",
+  "prompt": "What is retrieval augmented generation?"
+}
